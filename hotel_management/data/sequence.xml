@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record id="rooms_ref_sequence" model="ir.sequence">
+            <field name="name">Rooms Sequence</field>
+            <field name="code">rooms_sequence</field>
+            <field name="prefix">RS</field>
+            <field name="padding">4</field>
+            <field name="number_increment">1</field>
+            <field name="implementation">standard</field>
+        </record>
+    </data>
+</odoo>

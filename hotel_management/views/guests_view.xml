@@ -1,0 +1,42 @@
+<odoo>
+    <record id="guests_view_tree" model="ir.ui.view">
+           <field name="name">guests tree</field>
+           <field name="model">hotel.guests</field>
+           <field name="arch" type="xml">
+               <tree  decoration-danger="(out)">
+
+                        <field name="name"/>
+                        <field name="email" />
+                        <field name="phone" />
+                        <field name="check_in_date" />
+                        <field  name="out" invisible="1"/>
+                        <field name="check_out_date" />
+                        <field name="subscription_type" />
+                        <field name="room_id"/>
+                       </tree>
+           </field>
+       </record>
+
+    <record id="check_out_date_cron" model="ir.cron">
+        <field name="name"> check out date cron</field>
+        <field name="model_id" ref="model_hotel_guests" />
+        <field name="state">code</field>
+        <field name="code">model.check_out_date_daily()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+
+    </record>
+    <record id="guests_action" model="ir.actions.act_window">
+        <field name="name">Guests Action</field>
+        <field name="res_model">hotel.guests</field>
+
+    </record>
+     <menuitem  id="guests_menu_item"
+                name="Guests"
+                parent="guests_menu"
+                action="guests_action"
+
+     />
+</odoo>
