@@ -3,21 +3,21 @@
     <menuitem  id="base_menu_item"
                name="Hotel Menu"
     />
-    <menuitem  id="guests_menu"
-               name="Guests"
-               parent="base_menu_item"
-    />
-     <menuitem  id="configration_menu"
-                name="configration"
-                parent="base_menu_item"
-
-    />
-      <menuitem  id="registration_menu"
+     <menuitem  id="registration_menu"
                 name="registration"
                 parent="base_menu_item"
 
     />
+    <menuitem  id="guests_menu"
+               name="Guests"
+               parent="base_menu_item"
+               groups="hotel_management.hotel_manger_group"
+    />
+     <menuitem  id="configration_menu"
+                name="configration"
+                parent="base_menu_item"
+                groups="hotel_management.hotel_manger_group"
 
-
+    />
 
 </odoo>

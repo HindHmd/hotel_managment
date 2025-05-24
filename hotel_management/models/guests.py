@@ -36,3 +36,6 @@ class HotelGuests(models.Model):
            for rec in guests_ids:
                 if rec.check_out_date and rec.check_out_date < fields.Date.today():
                    rec.out=True
+
+
+

@@ -28,6 +28,17 @@
         <field name="active">True</field>
 
     </record>
+
+     <record id="guests_open_hotel_registration_wizard" model="ir.actions.server">
+           <field name="name">guests registration</field>
+           <field name="model_id" ref="model_hotel_guests"/>
+           <field name="binding_model_id" ref="model_hotel_guests"/>
+           <field name="state" >code</field>
+           <field name="code">
+               action=records.open_hotel_registration_wizard()
+           </field>
+       </record>
+
     <record id="guests_action" model="ir.actions.act_window">
         <field name="name">Guests Action</field>
         <field name="res_model">hotel.guests</field>
