@@ -1,0 +1,67 @@
+<odoo>
+     <record id="view_registration_request_tree" model="ir.ui.view">
+        <field name="name">hotel.registration.request.tree</field>
+        <field name="model">hotel.registration.request</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state=='pending'" decoration-danger="state=='rejected'" decoration-success="state=='approved'">
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="check_in_date"/>
+                <field name="check_out_date"/>
+                <field name="state"/>
+                <field name="create_date" string="Request Date"/>
+            </tree>
+        </field>
+    </record>
+
+      <record id="view_registration_request_form" model="ir.ui.view">
+        <field name="name">hotel.registration.request.form</field>
+        <field name="model">hotel.registration.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="subscription_type"/>
+                        </group>
+                        <group>
+                            <field name="room_id"/>
+                            <field name="check_in_date"/>
+                            <field name="check_out_date"/>
+                            <field name="state" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button name="action_approve" string="Approve" type="object"
+                            class="oe_highlight" attrs="{'invisible': [('state','!=','pending')]}"/>
+                    <button name="action_reject" string="Reject" type="object"
+                            class="btn-secondary" attrs="{'invisible': [('state','!=','pending')]}"/>
+                    <button string="Close" special="cancel" class="btn-default"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+      <record id="action_registration_requests" model="ir.actions.act_window">
+        <field name="name">Registration Requests</field>
+        <field name="res_model">hotel.registration.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('state','=','pending')]</field>
+    </record>
+
+      <menuitem id="menu_registration_requests" name="Registration Requests"
+              parent="registration_menu" action="action_registration_requests"
+              sequence="20" groups="hotel_management.hotel_manger_group"/>
+</odoo>
