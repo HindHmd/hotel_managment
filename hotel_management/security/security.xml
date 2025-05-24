@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="hotel_category" model="ir.module.category">
+               <field name="name">Hotel Category</field>
+        </record>
+
+        <record id="hotel_guests_group" model="res.groups">
+               <field name="name"> Hotel  Guests</field>
+               <field name="category_id" ref="hotel_management.hotel_category"/>
+        </record>
+
+         <record id="hotel_manger_group" model="res.groups">
+               <field name="name">Hotel Mangers</field>
+               <field name="category_id" ref="hotel_management.hotel_category"/>
+        </record>
+
+    </data>
+</odoo>
